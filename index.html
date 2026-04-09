@@ -161,7 +161,7 @@ tailwind.config = {
 </div>
 
 <!-- Treatments -->
-<div class="md:col-span-2 bg-[#d17c91]/90 backdrop-blur-md text-white p-10 rounded-3xl relative overflow-hidden shadow-xl hover:shadow-[0_20px_40px_rgba(209,124,145,0.3)] transition-all transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="400">
+<div class="md:col-span-2 bg-[#d17c91]/90 text-white p-10 rounded-3xl relative overflow-hidden shadow-xl hover:shadow-[0_20px_40px_rgba(209,124,145,0.3)] transition-shadow duration-500" data-aos="fade-up" data-aos-delay="400">
 <div class="relative z-10 flex flex-col justify-between h-full">
 <div>
 <h3 class="font-headline text-3xl mb-4 text-white">Alizados & Botox Premium</h3>
@@ -171,9 +171,9 @@ tailwind.config = {
     Descubrir la tecnología
 </button>
 </div>
-<!-- Texture overlay -->
-<div class="absolute right-0 bottom-0 top-0 w-2/3 opacity-20 pointer-events-none mix-blend-plus-lighter bg-[url('https://images.unsplash.com/photo-1544079870-7607a3c3ce66?q=80&w=1200&auto=format&fit=crop')] bg-cover bg-center"></div>
-<div class="absolute inset-0 bg-gradient-to-r from-[#d17c91] via-transparent to-transparent"></div>
+<!-- Texture overlay (No GPU intensive blends) -->
+<div class="absolute right-0 bottom-0 top-0 w-2/3 opacity-20 pointer-events-none bg-[url('https://images.unsplash.com/photo-1544079870-7607a3c3ce66?q=80&w=1200&auto=format&fit=crop')] bg-cover bg-center" style="transform: translateZ(0);"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-[#d17c91] via-transparent to-transparent pointer-events-none"></div>
 </div>
 
 <!-- Extra Mini Cards -->
