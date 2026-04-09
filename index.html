@@ -17,18 +17,17 @@ tailwind.config = {
     theme: {
         extend: {
             "colors": {
-                // Light Romantic Pastel Palette
-                "background": "#ffffff",       
-                "on-background": "#4a2c31",    // Deep dusty rose / brown for text
-                "primary": "#d17c91",          // Rosa palo
+                "background": "#ffffff",
+                "on-background": "#4a2c31",
+                "primary": "#d17c91",
                 "on-primary": "#ffffff",
-                "primary-container": "#ffe6ed",// Very soft pink
+                "primary-container": "#ffe6ed",
                 "on-primary-container": "#4a2c31",
-                "secondary": "#a88188",        // Muted earthy pink
+                "secondary": "#a88188",
                 "surface": "#ffffff",
                 "on-surface": "#5c3d42",
-                "surface-variant": "#fcf5f6",  // Tinted white card backgrounds
-                "outline": "#e8d3d8"           // Soft border
+                "surface-variant": "#fcf5f6",
+                "outline": "#e8d3d8"
             },
             "fontFamily": {
                 "headline": ["Noto Serif", "serif"],
@@ -44,19 +43,15 @@ tailwind.config = {
 .material-symbols-outlined {
     font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
 }
-/* Abundant Light Pink & White Roses Background */
 .floral-bg-layer {
     background-color: #fdfafb;
-    background-image: 
-        url('background.png'); 
+    background-image: url('background.png');
     background-size: cover;
     background-position: center;
 }
 .floral-bg-overlay {
-    background-color: rgba(255, 255, 255, 0.45); /* White tint over the raw flowers to keep text readable */
+    background-color: rgba(255, 255, 255, 0.45);
 }
-
-/* Microinteractions */
 .btn-glow:hover {
     box-shadow: 0 5px 20px rgba(209, 124, 145, 0.4);
 }
@@ -67,246 +62,277 @@ tailwind.config = {
     border: 1px solid rgba(255, 255, 255, 0.5);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
 }
+/* Mobile menu */
+#mobile-menu {
+    display: none;
+}
+#mobile-menu.open {
+    display: flex;
+}
 </style>
 </head>
 
 <body class="text-on-background font-body selection:bg-primary selection:text-white antialiased overflow-x-hidden relative">
 
-<!-- GPU Optimized Fixed Floral Background Layers -->
+<!-- Fixed Floral Background Layers -->
 <div class="fixed inset-0 z-[-2] pointer-events-none floral-bg-layer" style="transform: translateZ(0);"></div>
 <div class="fixed inset-0 floral-bg-overlay z-[-1] pointer-events-none" style="transform: translateZ(0);"></div>
 
-<!-- TopAppBar Glassmorphism -->
+<!-- TopAppBar -->
 <nav class="fixed top-0 w-full z-50 glass-panel shadow-sm" data-aos="fade-down" data-aos-duration="1000">
-<div class="flex justify-between items-center w-full px-8 py-5 max-w-7xl mx-auto">
-<div class="text-2xl font-headline tracking-widest text-[#4a2c31] font-bold">KAMIL'S</div>
-<div class="hidden md:flex items-center gap-10">
-<a class="font-serif text-lg tracking-wide text-on-background hover:text-primary transition-colors duration-300" href="#services">Servicios</a>
-<a class="font-serif text-lg tracking-wide text-on-background hover:text-primary transition-colors duration-300" href="#about">Nosotros</a>
-<a class="font-serif text-lg tracking-wide text-on-background hover:text-primary transition-colors duration-300" href="#contact">Contacto</a>
+<div class="flex justify-between items-center w-full px-4 md:px-8 py-4 md:py-5 max-w-7xl mx-auto">
+    <div class="text-xl md:text-2xl font-headline tracking-widest text-[#4a2c31] font-bold">KAMIL'S</div>
+    <!-- Desktop nav -->
+    <div class="hidden md:flex items-center gap-10">
+        <a class="font-serif text-lg tracking-wide text-on-background hover:text-primary transition-colors duration-300" href="#services">Servicios</a>
+        <a class="font-serif text-lg tracking-wide text-on-background hover:text-primary transition-colors duration-300" href="#about">Nosotros</a>
+        <a class="font-serif text-lg tracking-wide text-on-background hover:text-primary transition-colors duration-300" href="#contact">Contacto</a>
+    </div>
+    <div class="flex items-center gap-3">
+        <button class="bg-primary text-on-primary px-4 md:px-6 py-2 rounded-full font-label text-xs md:text-sm uppercase tracking-widest btn-glow hover:-translate-y-0.5 transition-all duration-300">
+            Reservar
+        </button>
+        <!-- Hamburger -->
+        <button id="menu-toggle" class="md:hidden flex flex-col justify-center items-center w-9 h-9 gap-[5px]" aria-label="Abrir menú">
+            <span class="block w-6 h-[2px] bg-[#4a2c31] transition-all duration-300"></span>
+            <span class="block w-6 h-[2px] bg-[#4a2c31] transition-all duration-300"></span>
+            <span class="block w-6 h-[2px] bg-[#4a2c31] transition-all duration-300"></span>
+        </button>
+    </div>
 </div>
-<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label text-sm uppercase tracking-widest btn-glow hover:-translate-y-0.5 transition-all duration-300">
-    Reservar Cita
-</button>
+<!-- Mobile menu dropdown -->
+<div id="mobile-menu" class="flex-col gap-0 bg-white/95 backdrop-blur-xl border-t border-outline/30 md:hidden">
+    <a class="font-serif text-base tracking-wide text-on-background hover:text-primary hover:bg-primary-container/30 transition-colors px-6 py-4 border-b border-outline/20" href="#services" onclick="closeMobileMenu()">Servicios</a>
+    <a class="font-serif text-base tracking-wide text-on-background hover:text-primary hover:bg-primary-container/30 transition-colors px-6 py-4 border-b border-outline/20" href="#about" onclick="closeMobileMenu()">Nosotros</a>
+    <a class="font-serif text-base tracking-wide text-on-background hover:text-primary hover:bg-primary-container/30 transition-colors px-6 py-4" href="#contact" onclick="closeMobileMenu()">Contacto</a>
 </div>
 </nav>
 
 <main>
 <!-- Hero Section -->
-<section class="relative min-h-screen flex items-center pt-24 overflow-hidden">
-<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-12 gap-12 items-center relative z-10 w-full">
-<div class="md:col-span-7 glass-panel p-10 rounded-3xl" data-aos="fade-right" data-aos-duration="1200">
-<h1 class="font-headline text-[4rem] md:text-[6rem] leading-none text-[#4a2c31] mb-4 relative drop-shadow-sm">
-    KAMIL'S
-</h1>
-<p class="font-headline text-3xl md:text-4xl text-primary mb-8 italic" data-aos="fade-up" data-aos-delay="200">Exclusivo para ti</p>
-<div class="max-w-md mb-12 text-[#5c3d42] text-lg leading-relaxed font-light" data-aos="fade-up" data-aos-delay="400">
-    Elevando la belleza natural. Un refugio luminoso, romántico y repleto de detalles delicados en el corazón de Yanahuara, diseñado para resaltar tu luminosidad interna.
-</div>
-<div data-aos="fade-up" data-aos-delay="600">
-    <button class="bg-[#4a2c31] text-white px-10 py-4 rounded-full font-label text-lg tracking-widest hover:bg-primary transition-all duration-500 flex items-center gap-3 btn-glow">
-        RESERVAR CITA
-        <span class="material-symbols-outlined">arrow_forward</span>
-    </button>
-</div>
-</div>
-<div class="md:col-span-5 relative hidden md:block" data-aos="zoom-in-up" data-aos-duration="1500" data-aos-delay="300">
-<div class="aspect-[3/4] overflow-hidden rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] relative border-[8px] border-white/80 transform rotate-3 hover:rotate-0 transition-transform duration-[1s]">
-    <img alt="Luxury Salon" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=1200&auto=format&fit=crop"/>
-</div>
-</div>
+<section class="relative min-h-screen flex items-center pt-20 md:pt-24 overflow-hidden">
+<div class="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center relative z-10 w-full py-8 md:py-0">
+    <div class="md:col-span-7 glass-panel p-6 md:p-10 rounded-2xl md:rounded-3xl" data-aos="fade-right" data-aos-duration="1200">
+        <h1 class="font-headline text-[3rem] md:text-[6rem] leading-none text-[#4a2c31] mb-3 md:mb-4 relative drop-shadow-sm">
+            KAMIL'S
+        </h1>
+        <p class="font-headline text-2xl md:text-4xl text-primary mb-5 md:mb-8 italic" data-aos="fade-up" data-aos-delay="200">Exclusivo para ti</p>
+        <div class="max-w-md mb-8 md:mb-12 text-[#5c3d42] text-base md:text-lg leading-relaxed font-light" data-aos="fade-up" data-aos-delay="400">
+            Elevando la belleza natural. Un refugio luminoso, romántico y repleto de detalles delicados en el corazón de Yanahuara, diseñado para resaltar tu luminosidad interna.
+        </div>
+        <div data-aos="fade-up" data-aos-delay="600">
+            <button class="bg-[#4a2c31] text-white px-7 md:px-10 py-3 md:py-4 rounded-full font-label text-base md:text-lg tracking-widest hover:bg-primary transition-all duration-500 flex items-center gap-3 btn-glow">
+                RESERVAR CITA
+                <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+        </div>
+    </div>
+    <!-- Hero image: visible on tablet+ -->
+    <div class="md:col-span-5 relative hidden md:block" data-aos="zoom-in-up" data-aos-duration="1500" data-aos-delay="300">
+        <div class="aspect-[3/4] overflow-hidden rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] relative border-[8px] border-white/80 transform rotate-3 hover:rotate-0 transition-transform duration-[1s]">
+            <img alt="Luxury Salon" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=1200&auto=format&fit=crop"/>
+        </div>
+    </div>
+    <!-- Hero image mobile: horizontal strip -->
+    <div class="md:hidden w-full" data-aos="fade-up" data-aos-delay="300">
+        <div class="w-full h-52 overflow-hidden rounded-2xl shadow-lg border-4 border-white/80">
+            <img alt="Luxury Salon" class="w-full h-full object-cover object-top" src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=1200&auto=format&fit=crop"/>
+        </div>
+    </div>
 </div>
 </section>
 
-<!-- Services Section: Bento Grid -->
-<section class="py-32" id="services">
-<div class="max-w-7xl mx-auto px-8">
-<div class="mb-20 text-center glass-panel inline-block px-12 py-6 rounded-full mx-auto" data-aos="fade-up">
-<span class="font-label text-primary uppercase tracking-[0.3em] text-sm font-bold block mb-2">Nuestros Servicios</span>
-<h2 class="font-headline text-5xl text-[#4a2c31]">Arte en cada detalle</h2>
-</div>
+<!-- Services Section -->
+<section class="py-16 md:py-32" id="services">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
+    <div class="mb-12 md:mb-20 text-center glass-panel inline-block px-6 md:px-12 py-4 md:py-6 rounded-full mx-auto" data-aos="fade-up">
+        <span class="font-label text-primary uppercase tracking-[0.2em] md:tracking-[0.3em] text-xs md:text-sm font-bold block mb-1 md:mb-2">Nuestros Servicios</span>
+        <h2 class="font-headline text-3xl md:text-5xl text-[#4a2c31]">Arte en cada detalle</h2>
+    </div>
 
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-4">
-<!-- Color & Tech -->
-<div class="md:col-span-2 glass-panel p-10 rounded-3xl flex flex-col justify-between group overflow-hidden relative hover:-translate-y-2 transition-all duration-500" data-aos="fade-up" data-aos-delay="100">
-<div class="relative z-10">
-<h3 class="font-headline text-3xl text-[#4a2c31] mb-4 group-hover:text-primary transition-colors">Técnicas de Color</h3>
-<p class="text-on-surface max-w-sm mb-6 font-light">Balayage, baby lights y californianas diseñadas para iluminar tu rostro con alto contraste y sofisticación.</p>
-<ul class="space-y-3 text-secondary font-semibold">
-<li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">fiber_manual_record</span> Balayage Signature</li>
-<li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">fiber_manual_record</span> Baby Lights</li>
-<li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">fiber_manual_record</span> Californianas Dimensionales</li>
-</ul>
-</div>
-<img alt="Hair color" class="absolute right-0 top-0 w-1/2 h-full object-cover opacity-20 group-hover:opacity-60 transition-opacity duration-700 mix-blend-multiply" src="https://images.unsplash.com/photo-1595476108010-b4d1f10a5e42?q=80&w=1200&auto=format&fit=crop"/>
-<div class="absolute inset-0 bg-gradient-to-r from-white/90 via-white/70 to-transparent"></div>
-</div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8 mt-4">
+        <!-- Color & Tech -->
+        <div class="md:col-span-2 glass-panel p-6 md:p-10 rounded-2xl md:rounded-3xl flex flex-col justify-between group overflow-hidden relative hover:-translate-y-2 transition-all duration-500" data-aos="fade-up" data-aos-delay="100">
+            <div class="relative z-10">
+                <h3 class="font-headline text-2xl md:text-3xl text-[#4a2c31] mb-3 md:mb-4 group-hover:text-primary transition-colors">Técnicas de Color</h3>
+                <p class="text-on-surface max-w-sm mb-4 md:mb-6 font-light text-sm md:text-base">Balayage, baby lights y californianas diseñadas para iluminar tu rostro con alto contraste y sofisticación.</p>
+                <ul class="space-y-2 md:space-y-3 text-secondary font-semibold text-sm md:text-base">
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">fiber_manual_record</span> Balayage Signature</li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">fiber_manual_record</span> Baby Lights</li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">fiber_manual_record</span> Californianas Dimensionales</li>
+                </ul>
+            </div>
+            <img alt="Hair color" class="absolute right-0 top-0 w-1/2 h-full object-cover opacity-20 group-hover:opacity-60 transition-opacity duration-700 mix-blend-multiply" src="https://images.unsplash.com/photo-1595476108010-b4d1f10a5e42?q=80&w=1200&auto=format&fit=crop"/>
+            <div class="absolute inset-0 bg-gradient-to-r from-white/90 via-white/70 to-transparent"></div>
+        </div>
 
-<!-- Nails -->
-<div class="glass-panel p-10 rounded-3xl border border-outline flex flex-col justify-center text-center hover:border-primary transition-colors duration-300" data-aos="fade-up" data-aos-delay="200">
-<div class="mb-6">
-<span class="material-symbols-outlined text-5xl text-primary">spa</span>
-</div>
-<h3 class="font-headline text-2xl text-[#4a2c31] mb-4">Manicure & Nails</h3>
-<p class="text-sm text-on-surface font-light">Uñas acrílicas, gel y pedicura spa romántico con detalles de joyería.</p>
-</div>
+        <!-- Nails -->
+        <div class="glass-panel p-8 md:p-10 rounded-2xl md:rounded-3xl border border-outline flex flex-col justify-center text-center hover:border-primary transition-colors duration-300" data-aos="fade-up" data-aos-delay="200">
+            <div class="mb-4 md:mb-6">
+                <span class="material-symbols-outlined text-5xl text-primary">spa</span>
+            </div>
+            <h3 class="font-headline text-xl md:text-2xl text-[#4a2c31] mb-3 md:mb-4">Manicure & Nails</h3>
+            <p class="text-sm text-on-surface font-light">Uñas acrílicas, gel y pedicura spa romántico con detalles de joyería.</p>
+        </div>
 
-<!-- Pestañas & Cejas -->
-<div class="glass-panel p-10 rounded-3xl border border-outline flex flex-col justify-center text-center hover:border-primary transition-colors duration-300" data-aos="fade-up" data-aos-delay="300">
-<div class="mb-6">
-<span class="material-symbols-outlined text-5xl text-primary">visibility</span>
-</div>
-<h3 class="font-headline text-2xl text-[#4a2c31] mb-4">Mirada Sublime</h3>
-<p class="text-sm text-on-surface font-light">Lifting, pestañas pelo a pelo y diseño de cejas sutiles y elegantes.</p>
-</div>
+        <!-- Pestañas & Cejas -->
+        <div class="glass-panel p-8 md:p-10 rounded-2xl md:rounded-3xl border border-outline flex flex-col justify-center text-center hover:border-primary transition-colors duration-300" data-aos="fade-up" data-aos-delay="300">
+            <div class="mb-4 md:mb-6">
+                <span class="material-symbols-outlined text-5xl text-primary">visibility</span>
+            </div>
+            <h3 class="font-headline text-xl md:text-2xl text-[#4a2c31] mb-3 md:mb-4">Mirada Sublime</h3>
+            <p class="text-sm text-on-surface font-light">Lifting, pestañas pelo a pelo y diseño de cejas sutiles y elegantes.</p>
+        </div>
 
-<!-- Treatments -->
-<div class="md:col-span-2 bg-[#d17c91]/90 text-white p-10 rounded-3xl relative overflow-hidden shadow-xl hover:shadow-[0_20px_40px_rgba(209,124,145,0.3)] transition-shadow duration-500" data-aos="fade-up" data-aos-delay="400">
-<div class="relative z-10 flex flex-col justify-between h-full">
-<div>
-<h3 class="font-headline text-3xl mb-4 text-white">Alizados & Botox Premium</h3>
-<p class="opacity-95 max-w-md font-light text-white/90">Tecnología molecular capilar para brillos espejo y una caída espectacular. Restauración intensiva aromaterapéutica.</p>
-</div>
-<button class="mt-8 self-start border-2 border-white/80 px-8 py-3 rounded-full font-label text-xs tracking-widest hover:bg-white hover:text-primary transition-all uppercase font-bold shadow-sm">
-    Descubrir la tecnología
-</button>
-</div>
-<!-- Texture overlay (No GPU intensive blends) -->
-<div class="absolute right-0 bottom-0 top-0 w-2/3 opacity-20 pointer-events-none bg-[url('https://images.unsplash.com/photo-1544079870-7607a3c3ce66?q=80&w=1200&auto=format&fit=crop')] bg-cover bg-center" style="transform: translateZ(0);"></div>
-<div class="absolute inset-0 bg-gradient-to-r from-[#d17c91] via-transparent to-transparent pointer-events-none"></div>
-</div>
+        <!-- Treatments -->
+        <div class="md:col-span-2 bg-[#d17c91]/90 text-white p-6 md:p-10 rounded-2xl md:rounded-3xl relative overflow-hidden shadow-xl hover:shadow-[0_20px_40px_rgba(209,124,145,0.3)] transition-shadow duration-500" data-aos="fade-up" data-aos-delay="400">
+            <div class="relative z-10 flex flex-col justify-between h-full">
+                <div>
+                    <h3 class="font-headline text-2xl md:text-3xl mb-3 md:mb-4 text-white">Alizados & Botox Premium</h3>
+                    <p class="opacity-95 max-w-md font-light text-white/90 text-sm md:text-base">Tecnología molecular capilar para brillos espejo y una caída espectacular. Restauración intensiva aromaterapéutica.</p>
+                </div>
+                <button class="mt-6 md:mt-8 self-start border-2 border-white/80 px-6 md:px-8 py-3 rounded-full font-label text-xs tracking-widest hover:bg-white hover:text-primary transition-all uppercase font-bold shadow-sm">
+                    Descubrir la tecnología
+                </button>
+            </div>
+            <div class="absolute right-0 bottom-0 top-0 w-2/3 opacity-20 pointer-events-none bg-[url('https://images.unsplash.com/photo-1544079870-7607a3c3ce66?q=80&w=1200&auto=format&fit=crop')] bg-cover bg-center" style="transform: translateZ(0);"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-[#d17c91] via-transparent to-transparent pointer-events-none"></div>
+        </div>
 
-<!-- Extra Mini Cards -->
-<div class="glass-panel p-8 rounded-3xl flex items-center gap-6 shadow-md" data-aos="fade-up" data-aos-delay="500">
-<span class="material-symbols-outlined text-4xl text-primary">brush</span>
-<div>
-<h4 class="font-headline text-xl text-[#4a2c31]">Depilación</h4>
-<p class="text-xs text-secondary uppercase tracking-widest font-bold">Cera e Hilo</p>
-</div>
-</div>
-<div class="glass-panel p-8 rounded-3xl flex items-center gap-6 shadow-md" data-aos="fade-up" data-aos-delay="600">
-<span class="material-symbols-outlined text-4xl text-primary">face_retouching_natural</span>
-<div>
-<h4 class="font-headline text-xl text-[#4a2c31]">Maquillaje</h4>
-<p class="text-xs text-secondary uppercase tracking-widest font-bold">Novias & Eventos</p>
-</div>
-</div>
-<div class="glass-panel p-8 rounded-3xl flex items-center gap-6 shadow-md" data-aos="fade-up" data-aos-delay="700">
-<span class="material-symbols-outlined text-4xl text-primary">shopping_bag</span>
-<div>
-<h4 class="font-headline text-xl text-[#4a2c31]">Boutique</h4>
-<p class="text-xs text-secondary uppercase tracking-widest font-bold">Florals & Skin</p>
-</div>
-</div>
-</div>
+        <!-- Mini Cards -->
+        <div class="glass-panel p-6 md:p-8 rounded-2xl md:rounded-3xl flex items-center gap-4 md:gap-6 shadow-md" data-aos="fade-up" data-aos-delay="500">
+            <span class="material-symbols-outlined text-4xl text-primary flex-shrink-0">brush</span>
+            <div>
+                <h4 class="font-headline text-lg md:text-xl text-[#4a2c31]">Depilación</h4>
+                <p class="text-xs text-secondary uppercase tracking-widest font-bold">Cera e Hilo</p>
+            </div>
+        </div>
+        <div class="glass-panel p-6 md:p-8 rounded-2xl md:rounded-3xl flex items-center gap-4 md:gap-6 shadow-md" data-aos="fade-up" data-aos-delay="600">
+            <span class="material-symbols-outlined text-4xl text-primary flex-shrink-0">face_retouching_natural</span>
+            <div>
+                <h4 class="font-headline text-lg md:text-xl text-[#4a2c31]">Maquillaje</h4>
+                <p class="text-xs text-secondary uppercase tracking-widest font-bold">Novias & Eventos</p>
+            </div>
+        </div>
+        <div class="glass-panel p-6 md:p-8 rounded-2xl md:rounded-3xl flex items-center gap-4 md:gap-6 shadow-md" data-aos="fade-up" data-aos-delay="700">
+            <span class="material-symbols-outlined text-4xl text-primary flex-shrink-0">shopping_bag</span>
+            <div>
+                <h4 class="font-headline text-lg md:text-xl text-[#4a2c31]">Boutique</h4>
+                <p class="text-xs text-secondary uppercase tracking-widest font-bold">Florals & Skin</p>
+            </div>
+        </div>
+    </div>
 </div>
 </section>
 
 <!-- Philosophy Section -->
-<section class="py-32 relative" id="about">
-<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-24 items-center relative z-10 glass-panel rounded-[3rem] p-16">
-<div class="relative" data-aos="zoom-out-right">
-<div class="relative z-10 border-[12px] border-white shadow-[0_20px_50px_rgba(209,124,145,0.2)] overflow-hidden rounded-[2rem] transform -rotate-3 hover:rotate-0 transition-transform duration-700">
-<img alt="Stylist working" class="w-full h-auto" src="https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1200&auto=format&fit=crop"/>
-</div>
-<div class="absolute -top-10 -right-10 w-64 h-64 bg-primary-container/80 rounded-full blur-3xl -z-10 animate-pulse"></div>
-</div>
-<div data-aos="fade-up">
-<span class="font-label text-primary uppercase tracking-[0.3em] text-sm font-bold flex items-center gap-3">
-    <div class="w-8 h-[2px] bg-primary"></div> Filosofía KAMIL'S
-</span>
-<h2 class="font-headline text-5xl text-[#4a2c31] mt-6 mb-8 leading-tight">La esencia floral<br>de la personalización</h2>
-<p class="text-secondary text-xl leading-relaxed mb-6 italic font-headline border-l-4 border-primary pl-6">
-    "En KAMIL'S creemos que cada cliente es como una flor única: merece el cuidado, la luz y los detalles correctos para florecer hermosamente."
-</p>
-<p class="text-on-surface leading-relaxed mb-10 font-light text-lg">
-    Nuestro enfoque 'Exclusivo para ti' se caracteriza por el trato suave, la luz natural abundante y una fragancia floral romántica que acompaña cada cita. Te ayudamos a descubrir tu estilo romántico y reluciente.
-</p>
-<div class="grid grid-cols-2 gap-8 pt-8 border-t border-primary/20">
-<div data-aos="fade-up" data-aos-delay="200">
-<span class="block font-headline text-5xl text-primary mb-2">10+</span>
-<span class="font-label text-sm uppercase tracking-widest text-[#4a2c31] font-bold">Años Floreciendo</span>
-</div>
-<div data-aos="fade-up" data-aos-delay="400">
-<span class="block font-headline text-5xl text-primary mb-2">5k+</span>
-<span class="font-label text-sm uppercase tracking-widest text-[#4a2c31] font-bold">Clientes Felices</span>
-</div>
-</div>
-</div>
+<section class="py-16 md:py-32 relative" id="about">
+<div class="max-w-7xl mx-auto px-4 md:px-8 relative z-10 glass-panel rounded-2xl md:rounded-[3rem] p-6 md:p-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-24 items-center">
+        <div class="relative overflow-hidden" data-aos="zoom-out-right">
+            <div class="relative z-10 border-[8px] md:border-[12px] border-white shadow-[0_20px_50px_rgba(209,124,145,0.2)] overflow-hidden rounded-[1.5rem] md:rounded-[2rem] transform md:-rotate-3 md:hover:rotate-0 transition-transform duration-700">
+                <img alt="Stylist working" class="w-full h-auto" src="https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1200&auto=format&fit=crop"/>
+            </div>
+            <div class="absolute -top-6 -right-6 md:-top-10 md:-right-10 w-40 h-40 md:w-64 md:h-64 bg-primary-container/80 rounded-full blur-3xl -z-10 animate-pulse"></div>
+        </div>
+        <div data-aos="fade-up">
+            <span class="font-label text-primary uppercase tracking-[0.3em] text-sm font-bold flex items-center gap-3">
+                <div class="w-8 h-[2px] bg-primary"></div> Filosofía KAMIL'S
+            </span>
+            <h2 class="font-headline text-3xl md:text-5xl text-[#4a2c31] mt-4 md:mt-6 mb-5 md:mb-8 leading-tight">La esencia floral<br>de la personalización</h2>
+            <p class="text-secondary text-lg md:text-xl leading-relaxed mb-5 md:mb-6 italic font-headline border-l-4 border-primary pl-5 md:pl-6">
+                "En KAMIL'S creemos que cada cliente es como una flor única: merece el cuidado, la luz y los detalles correctos para florecer hermosamente."
+            </p>
+            <p class="text-on-surface leading-relaxed mb-8 md:mb-10 font-light text-base md:text-lg">
+                Nuestro enfoque 'Exclusivo para ti' se caracteriza por el trato suave, la luz natural abundante y una fragancia floral romántica que acompaña cada cita. Te ayudamos a descubrir tu estilo romántico y reluciente.
+            </p>
+            <div class="grid grid-cols-2 gap-6 md:gap-8 pt-6 md:pt-8 border-t border-primary/20">
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <span class="block font-headline text-4xl md:text-5xl text-primary mb-1 md:mb-2">10+</span>
+                    <span class="font-label text-xs md:text-sm uppercase tracking-widest text-[#4a2c31] font-bold">Años Floreciendo</span>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="400">
+                    <span class="block font-headline text-4xl md:text-5xl text-primary mb-1 md:mb-2">5k+</span>
+                    <span class="font-label text-xs md:text-sm uppercase tracking-widest text-[#4a2c31] font-bold">Clientes Felices</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </section>
 
 <!-- Location & Contact -->
-<section class="py-32" id="contact">
-<div class="max-w-7xl mx-auto px-8">
-<div class="glass-panel p-2 rounded-[3rem] overflow-hidden shadow-2xl" data-aos="fade-up" data-aos-duration="1000">
-<div class="bg-white/80 backdrop-blur-3xl rounded-[2.5rem] grid grid-cols-1 md:grid-cols-2 overflow-hidden border border-white/50">
-<div class="p-16 flex flex-col justify-center relative">
-<h2 class="font-headline text-4xl text-[#4a2c31] mb-10">Encuéntranos en<br>Yanahuara</h2>
-<div class="space-y-10 relative z-10">
-<div class="flex items-start gap-5 hover:translate-x-2 transition-transform">
-<div class="w-14 h-14 bg-primary-container flex items-center justify-center rounded-full text-primary shadow-sm">
-    <span class="material-symbols-outlined">location_on</span>
-</div>
-<div>
-<p class="font-bold text-[#4a2c31] text-lg tracking-wide uppercase text-sm mb-1">Dirección</p>
-<p class="text-on-surface font-light">Calle Antiquilla 349,<br>Yanahuara - Arequipa</p>
-</div>
-</div>
-<div class="flex items-start gap-5 hover:translate-x-2 transition-transform">
-<div class="w-14 h-14 bg-primary-container flex items-center justify-center rounded-full text-primary shadow-sm">
-    <span class="material-symbols-outlined">call</span>
-</div>
-<div>
-<p class="font-bold text-[#4a2c31] text-lg tracking-wide uppercase text-sm mb-1">Citas / WhatsApp</p>
-<p class="text-on-surface font-light text-xl">983 288 877</p>
-</div>
-</div>
-<div class="flex items-start gap-5 hover:translate-x-2 transition-transform">
-<div class="w-14 h-14 bg-primary-container flex items-center justify-center rounded-full text-primary shadow-sm">
-    <span class="material-symbols-outlined">schedule</span>
-</div>
-<div>
-<p class="font-bold text-[#4a2c31] text-lg tracking-wide uppercase text-sm mb-1">Horarios</p>
-<p class="text-on-surface font-light">Lunes - Sábado<br><span class="text-primary font-bold">9:00 AM - 8:00 PM</span></p>
-</div>
-</div>
-</div>
-<div class="mt-14 flex gap-4">
-<a class="w-12 h-12 rounded-full bg-white border border-outline flex items-center justify-center text-primary hover:bg-primary-container transition-all hover:scale-110 shadow-sm" href="#">
-<span class="material-symbols-outlined">share</span>
-</a>
-</div>
-</div>
-<div class="h-[600px] md:h-auto relative bg-background border-l border-outline/20">
-<iframe src="https://maps.google.com/maps?q=Calle%20Antiquilla%20349,%20Yanahuara,%20Arequipa&t=&z=17&ie=UTF8&iwloc=&output=embed" class="absolute inset-0 w-full h-full border-0 filter opacity-80 mix-blend-multiply hover:opacity-100 hover:mix-blend-normal transition-all duration-700 saturate-50 hover:saturate-100" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-</div>
-</div>
-</div>
+<section class="py-16 md:py-32" id="contact">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
+    <div class="glass-panel p-2 rounded-2xl md:rounded-[3rem] overflow-hidden shadow-2xl" data-aos="fade-up" data-aos-duration="1000">
+        <div class="bg-white/80 backdrop-blur-3xl rounded-xl md:rounded-[2.5rem] grid grid-cols-1 md:grid-cols-2 overflow-hidden border border-white/50">
+            <div class="p-8 md:p-16 flex flex-col justify-center relative">
+                <h2 class="font-headline text-3xl md:text-4xl text-[#4a2c31] mb-8 md:mb-10">Encuéntranos en<br>Yanahuara</h2>
+                <div class="space-y-7 md:space-y-10 relative z-10">
+                    <div class="flex items-start gap-4 md:gap-5 hover:translate-x-2 transition-transform">
+                        <div class="w-12 h-12 md:w-14 md:h-14 bg-primary-container flex items-center justify-center rounded-full text-primary shadow-sm flex-shrink-0">
+                            <span class="material-symbols-outlined">location_on</span>
+                        </div>
+                        <div>
+                            <p class="font-bold text-[#4a2c31] tracking-wide uppercase text-xs mb-1">Dirección</p>
+                            <p class="text-on-surface font-light text-sm md:text-base">Calle Antiquilla 349,<br>Yanahuara - Arequipa</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 md:gap-5 hover:translate-x-2 transition-transform">
+                        <div class="w-12 h-12 md:w-14 md:h-14 bg-primary-container flex items-center justify-center rounded-full text-primary shadow-sm flex-shrink-0">
+                            <span class="material-symbols-outlined">call</span>
+                        </div>
+                        <div>
+                            <p class="font-bold text-[#4a2c31] tracking-wide uppercase text-xs mb-1">Citas / WhatsApp</p>
+                            <p class="text-on-surface font-light text-lg md:text-xl">983 288 877</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 md:gap-5 hover:translate-x-2 transition-transform">
+                        <div class="w-12 h-12 md:w-14 md:h-14 bg-primary-container flex items-center justify-center rounded-full text-primary shadow-sm flex-shrink-0">
+                            <span class="material-symbols-outlined">schedule</span>
+                        </div>
+                        <div>
+                            <p class="font-bold text-[#4a2c31] tracking-wide uppercase text-xs mb-1">Horarios</p>
+                            <p class="text-on-surface font-light text-sm md:text-base">Lunes - Sábado<br><span class="text-primary font-bold">9:00 AM - 8:00 PM</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-10 md:mt-14 flex gap-4">
+                    <a class="w-12 h-12 rounded-full bg-white border border-outline flex items-center justify-center text-primary hover:bg-primary-container transition-all hover:scale-110 shadow-sm" href="#">
+                        <span class="material-symbols-outlined">share</span>
+                    </a>
+                </div>
+            </div>
+            <!-- Map -->
+            <div class="h-64 md:h-auto relative bg-background border-t md:border-t-0 md:border-l border-outline/20">
+                <iframe src="https://maps.google.com/maps?q=Calle%20Antiquilla%20349,%20Yanahuara,%20Arequipa&t=&z=17&ie=UTF8&iwloc=&output=embed" class="absolute inset-0 w-full h-full border-0 opacity-80 hover:opacity-100 transition-all duration-700" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
 </div>
 </section>
 </main>
 
 <!-- Footer -->
-<footer class="bg-white/80 backdrop-blur-xl w-full py-16 px-8 border-t border-outline/30 text-center md:text-left">
-<div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8 max-w-7xl mx-auto">
-<div>
-<div class="text-3xl font-headline tracking-widest text-primary mb-4 font-bold">KAMIL'S</div>
-<p class="font-sans text-xs uppercase tracking-widest text-[#4a2c31]/60 mx-auto md:mx-0 max-w-md">
-    © 2026 KAMIL'S. Boutique Floral Salon.<br>Todos los derechos reservados.
-</p>
-</div>
-<div class="flex justify-center md:justify-end gap-10">
-<a class="font-sans text-xs uppercase tracking-widest text-[#4a2c31] font-bold hover:text-primary transition-colors duration-300" href="#">Instagram</a>
-<a class="font-sans text-xs uppercase tracking-widest text-[#4a2c31] font-bold hover:text-primary transition-colors duration-300" href="#">Facebook</a>
-<a class="font-sans text-xs uppercase tracking-widest text-[#4a2c31] font-bold hover:text-primary transition-colors duration-300" href="#contact">WhatsApp</a>
-</div>
+<footer class="bg-white/80 backdrop-blur-xl w-full py-10 md:py-16 px-6 md:px-8 border-t border-outline/30 text-center md:text-left">
+<div class="grid grid-cols-1 md:grid-cols-2 items-center gap-6 md:gap-8 max-w-7xl mx-auto">
+    <div>
+        <div class="text-2xl md:text-3xl font-headline tracking-widest text-primary mb-3 md:mb-4 font-bold">KAMIL'S</div>
+        <p class="font-sans text-xs uppercase tracking-widest text-[#4a2c31]/60 mx-auto md:mx-0 max-w-md">
+            © 2026 KAMIL'S. Boutique Floral Salon.<br>Todos los derechos reservados.
+        </p>
+    </div>
+    <div class="flex justify-center md:justify-end gap-8 md:gap-10">
+        <a class="font-sans text-xs uppercase tracking-widest text-[#4a2c31] font-bold hover:text-primary transition-colors duration-300" href="#">Instagram</a>
+        <a class="font-sans text-xs uppercase tracking-widest text-[#4a2c31] font-bold hover:text-primary transition-colors duration-300" href="#">Facebook</a>
+        <a class="font-sans text-xs uppercase tracking-widest text-[#4a2c31] font-bold hover:text-primary transition-colors duration-300" href="#contact">WhatsApp</a>
+    </div>
 </div>
 </footer>
 
 <!-- Floating WhatsApp Button -->
-<a href="https://wa.me/51983288877" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 bg-[#25D366] text-white p-4 rounded-full shadow-[0_10px_25px_rgba(37,211,102,0.5)] hover:scale-110 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(37,211,102,0.7)] transition-all duration-300 z-50 flex items-center justify-center m-2 group">
-    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
+<a href="https://wa.me/51983288877" target="_blank" rel="noopener noreferrer" class="fixed bottom-5 right-5 bg-[#25D366] text-white p-3 md:p-4 rounded-full shadow-[0_10px_25px_rgba(37,211,102,0.5)] hover:scale-110 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(37,211,102,0.7)] transition-all duration-300 z-50 flex items-center justify-center group">
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 16 16">
         <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c-.003 1.396.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
     </svg>
 </a>
@@ -316,9 +342,19 @@ tailwind.config = {
 <script>
     AOS.init({
         once: true,
-        offset: 120,
+        offset: 80,
         easing: 'ease-out-cubic',
     });
+
+    // Mobile menu toggle
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    toggle.addEventListener('click', () => {
+        menu.classList.toggle('open');
+    });
+    function closeMobileMenu() {
+        menu.classList.remove('open');
+    }
 </script>
 </body>
 </html>
