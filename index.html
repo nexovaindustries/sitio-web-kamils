@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="dark" lang="es">
+<html class="light" lang="es">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -17,18 +17,18 @@ tailwind.config = {
     theme: {
         extend: {
             "colors": {
-                // Premium Dark Floral Palette
-                "background": "#080607",       // True dark
-                "on-background": "#f4ecee",    // Off white for text
-                "primary": "#c9184a",          // Deep vivid rose/pinkish red
+                // Light Romantic Pastel Palette
+                "background": "#ffffff",       
+                "on-background": "#4a2c31",    // Deep dusty rose / brown for text
+                "primary": "#d17c91",          // Rosa palo
                 "on-primary": "#ffffff",
-                "primary-container": "#590d22",// Darkest red
-                "on-primary-container": "#ffb3c6",
-                "secondary": "#ff8fa3",        // Lighter pink accent
-                "surface": "#120d0f",          // Slightly lighter than bg
-                "on-surface": "#e0d3d6",
-                "surface-variant": "#22171a",  // Card backgrounds
-                "outline": "#4a353b"           // Subtle borders
+                "primary-container": "#ffe6ed",// Very soft pink
+                "on-primary-container": "#4a2c31",
+                "secondary": "#a88188",        // Muted earthy pink
+                "surface": "#ffffff",
+                "on-surface": "#5c3d42",
+                "surface-variant": "#fcf5f6",  // Tinted white card backgrounds
+                "outline": "#e8d3d8"           // Soft border
             },
             "fontFamily": {
                 "headline": ["Noto Serif", "serif"],
@@ -44,37 +44,46 @@ tailwind.config = {
 .material-symbols-outlined {
     font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
 }
-/* Floral Textured Background */
+/* Abundant Light Pink & White Roses Background */
 .floral-bg {
-    background-color: #080607;
-    background-image: linear-gradient(rgba(8, 6, 7, 0.85), rgba(8, 6, 7, 0.95)), 
-                      url('https://images.unsplash.com/photo-1550505183-b9dcda1a6ad8?q=80&w=2000&auto=format&fit=crop'); /* Macro dark red roses */
+    background-color: #fdfafb;
+    background-image: 
+        url('https://images.unsplash.com/photo-1518895949257-7621c3c786d7?q=80&w=2000&auto=format&fit=crop'); 
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
 }
+.floral-bg-overlay {
+    background-color: rgba(255, 255, 255, 0.45); /* White tint over the raw flowers to keep text readable */
+}
+
 /* Microinteractions */
 .btn-glow:hover {
-    box-shadow: 0 0 25px rgba(201, 24, 74, 0.4);
+    box-shadow: 0 5px 20px rgba(209, 124, 145, 0.4);
 }
 .glass-panel {
-    background: rgba(34, 23, 26, 0.6);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 143, 163, 0.1);
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
 }
 </style>
 </head>
 
-<body class="bg-background text-on-background font-body selection:bg-primary selection:text-white antialiased overflow-x-hidden">
+<body class="text-on-background font-body selection:bg-primary selection:text-white antialiased overflow-x-hidden floral-bg">
+
+<!-- Floral Background Constant Overlay Layer -->
+<div class="fixed inset-0 floral-bg-overlay z-[-1] pointer-events-none"></div>
 
 <!-- TopAppBar Glassmorphism -->
-<nav class="fixed top-0 w-full z-50 glass-panel border-b-0 shadow-lg" data-aos="fade-down" data-aos-duration="1000">
+<nav class="fixed top-0 w-full z-50 glass-panel shadow-sm" data-aos="fade-down" data-aos-duration="1000">
 <div class="flex justify-between items-center w-full px-8 py-5 max-w-7xl mx-auto">
-<div class="text-2xl font-headline tracking-widest text-primary font-bold">KAMIL'S</div>
+<div class="text-2xl font-headline tracking-widest text-[#4a2c31] font-bold">KAMIL'S</div>
 <div class="hidden md:flex items-center gap-10">
-<a class="font-serif text-lg tracking-wide text-on-background hover:text-secondary transition-colors duration-300" href="#services">Servicios</a>
-<a class="font-serif text-lg tracking-wide text-on-background hover:text-secondary transition-colors duration-300" href="#about">Nosotros</a>
-<a class="font-serif text-lg tracking-wide text-on-background hover:text-secondary transition-colors duration-300" href="#contact">Contacto</a>
+<a class="font-serif text-lg tracking-wide text-on-background hover:text-primary transition-colors duration-300" href="#services">Servicios</a>
+<a class="font-serif text-lg tracking-wide text-on-background hover:text-primary transition-colors duration-300" href="#about">Nosotros</a>
+<a class="font-serif text-lg tracking-wide text-on-background hover:text-primary transition-colors duration-300" href="#contact">Contacto</a>
 </div>
 <button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label text-sm uppercase tracking-widest btn-glow hover:-translate-y-0.5 transition-all duration-300">
     Reservar Cita
@@ -84,51 +93,44 @@ tailwind.config = {
 
 <main>
 <!-- Hero Section -->
-<section class="relative min-h-screen flex items-center pt-24 overflow-hidden floral-bg">
+<section class="relative min-h-screen flex items-center pt-24 overflow-hidden">
 <div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-12 gap-12 items-center relative z-10 w-full">
-<div class="md:col-span-7" data-aos="fade-right" data-aos-duration="1200">
-<h1 class="font-headline text-[5rem] md:text-[8rem] leading-none text-white mb-4 opacity-95 relative drop-shadow-2xl">
-    <span class="absolute -left-8 -top-12 text-[12rem] opacity-20 text-primary select-none blur-sm">K</span>
+<div class="md:col-span-7 glass-panel p-10 rounded-3xl" data-aos="fade-right" data-aos-duration="1200">
+<h1 class="font-headline text-[4rem] md:text-[6rem] leading-none text-[#4a2c31] mb-4 relative drop-shadow-sm">
     KAMIL'S
 </h1>
-<p class="font-headline text-3xl md:text-4xl text-secondary mb-8 italic" data-aos="fade-up" data-aos-delay="200">Exclusivo para ti</p>
-<div class="max-w-md mb-12 text-on-surface text-lg leading-relaxed font-light" data-aos="fade-up" data-aos-delay="400">
-    Elevando la belleza a una forma de arte. Un refugio oscuro y de sofisticación en el corazón de Yanahuara, diseñado para resaltar tu esencia natural con toques de vanguardia.
+<p class="font-headline text-3xl md:text-4xl text-primary mb-8 italic" data-aos="fade-up" data-aos-delay="200">Exclusivo para ti</p>
+<div class="max-w-md mb-12 text-[#5c3d42] text-lg leading-relaxed font-light" data-aos="fade-up" data-aos-delay="400">
+    Elevando la belleza natural. Un refugio luminoso, romántico y repleto de detalles delicados en el corazón de Yanahuara, diseñado para resaltar tu luminosidad interna.
 </div>
 <div data-aos="fade-up" data-aos-delay="600">
-    <button class="bg-primary text-on-primary px-10 py-4 rounded-full font-label text-lg tracking-widest hover:bg-white hover:text-primary transition-all duration-500 flex items-center gap-3 btn-glow">
+    <button class="bg-[#4a2c31] text-white px-10 py-4 rounded-full font-label text-lg tracking-widest hover:bg-primary transition-all duration-500 flex items-center gap-3 btn-glow">
         RESERVAR CITA
         <span class="material-symbols-outlined">arrow_forward</span>
     </button>
 </div>
 </div>
-<div class="md:col-span-5 relative" data-aos="zoom-in-up" data-aos-duration="1500" data-aos-delay="300">
-<div class="aspect-[3/4] overflow-hidden rounded-2xl shadow-2xl relative border border-outline">
-    <img alt="Luxury Salon" class="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s]" src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=1200&auto=format&fit=crop"/>
-    <div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60"></div>
-</div>
-<!-- Floral Overlap Decor -->
-<div class="absolute -bottom-16 -left-16 w-56 h-56 opacity-80 mix-blend-screen animate-pulse" style="animation-duration: 4s;">
-    <img alt="Dark Red Rose" class="w-full h-full object-contain drop-shadow-2xl" src="https://images.unsplash.com/photo-1549448043-41a6b0c2a229?q=80&w=800&auto=format&fit=crop" style="border-radius: 50%; mask-image: radial-gradient(circle, black 40%, transparent 70%); -webkit-mask-image: radial-gradient(circle, black 40%, transparent 70%);" />
+<div class="md:col-span-5 relative hidden md:block" data-aos="zoom-in-up" data-aos-duration="1500" data-aos-delay="300">
+<div class="aspect-[3/4] overflow-hidden rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] relative border-[8px] border-white/80 transform rotate-3 hover:rotate-0 transition-transform duration-[1s]">
+    <img alt="Luxury Salon" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=1200&auto=format&fit=crop"/>
 </div>
 </div>
 </div>
 </section>
 
 <!-- Services Section: Bento Grid -->
-<section class="py-32 bg-surface" id="services">
+<section class="py-32" id="services">
 <div class="max-w-7xl mx-auto px-8">
-<div class="mb-20 text-center" data-aos="fade-up">
-<span class="font-label text-secondary uppercase tracking-[0.3em] text-sm">Nuestros Servicios</span>
-<h2 class="font-headline text-5xl text-white mt-4">Arte en cada detalle</h2>
-<div class="w-24 h-1 bg-primary mx-auto mt-8 rounded-full"></div>
+<div class="mb-20 text-center glass-panel inline-block px-12 py-6 rounded-full mx-auto" data-aos="fade-up">
+<span class="font-label text-primary uppercase tracking-[0.3em] text-sm font-bold block mb-2">Nuestros Servicios</span>
+<h2 class="font-headline text-5xl text-[#4a2c31]">Arte en cada detalle</h2>
 </div>
 
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-4">
 <!-- Color & Tech -->
-<div class="md:col-span-2 glass-panel p-10 rounded-2xl flex flex-col justify-between group overflow-hidden relative hover:-translate-y-2 transition-all duration-500 shadow-xl" data-aos="fade-up" data-aos-delay="100">
+<div class="md:col-span-2 glass-panel p-10 rounded-3xl flex flex-col justify-between group overflow-hidden relative hover:-translate-y-2 transition-all duration-500" data-aos="fade-up" data-aos-delay="100">
 <div class="relative z-10">
-<h3 class="font-headline text-3xl text-white mb-4 group-hover:text-primary transition-colors">Técnicas de Color</h3>
+<h3 class="font-headline text-3xl text-[#4a2c31] mb-4 group-hover:text-primary transition-colors">Técnicas de Color</h3>
 <p class="text-on-surface max-w-sm mb-6 font-light">Balayage, baby lights y californianas diseñadas para iluminar tu rostro con alto contraste y sofisticación.</p>
 <ul class="space-y-3 text-secondary font-semibold">
 <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">fiber_manual_record</span> Balayage Signature</li>
@@ -136,64 +138,64 @@ tailwind.config = {
 <li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">fiber_manual_record</span> Californianas Dimensionales</li>
 </ul>
 </div>
-<img alt="Hair color" class="absolute right-0 top-0 w-1/2 h-full object-cover opacity-20 group-hover:opacity-50 transition-opacity duration-700 mix-blend-luminosity hover:mix-blend-normal" src="https://images.unsplash.com/photo-1595476108010-b4d1f10a5e42?q=80&w=1200&auto=format&fit=crop"/>
-<div class="absolute inset-0 bg-gradient-to-r from-surface-variant via-surface-variant/80 to-transparent"></div>
+<img alt="Hair color" class="absolute right-0 top-0 w-1/2 h-full object-cover opacity-20 group-hover:opacity-60 transition-opacity duration-700 mix-blend-multiply" src="https://images.unsplash.com/photo-1595476108010-b4d1f10a5e42?q=80&w=1200&auto=format&fit=crop"/>
+<div class="absolute inset-0 bg-gradient-to-r from-white/90 via-white/70 to-transparent"></div>
 </div>
 
 <!-- Nails -->
-<div class="surface-variant p-10 rounded-2xl border border-outline shadow-xl flex flex-col justify-center text-center hover:border-primary transition-colors duration-300" data-aos="fade-up" data-aos-delay="200" style="background-color: var(--color-surface-variant);">
+<div class="glass-panel p-10 rounded-3xl border border-outline flex flex-col justify-center text-center hover:border-primary transition-colors duration-300" data-aos="fade-up" data-aos-delay="200">
 <div class="mb-6">
 <span class="material-symbols-outlined text-5xl text-primary">spa</span>
 </div>
-<h3 class="font-headline text-2xl text-white mb-4">Manicure & Nails</h3>
-<p class="text-sm text-on-surface font-light">Uñas acrílicas, gel y pedicura spa dark-mode con detalles de lujo.</p>
+<h3 class="font-headline text-2xl text-[#4a2c31] mb-4">Manicure & Nails</h3>
+<p class="text-sm text-on-surface font-light">Uñas acrílicas, gel y pedicura spa romántico con detalles de joyería.</p>
 </div>
 
 <!-- Pestañas & Cejas -->
-<div class="surface-variant p-10 rounded-2xl border border-outline shadow-xl flex flex-col justify-center text-center hover:border-primary transition-colors duration-300" data-aos="fade-up" data-aos-delay="300" style="background-color: var(--color-surface-variant);">
+<div class="glass-panel p-10 rounded-3xl border border-outline flex flex-col justify-center text-center hover:border-primary transition-colors duration-300" data-aos="fade-up" data-aos-delay="300">
 <div class="mb-6">
 <span class="material-symbols-outlined text-5xl text-primary">visibility</span>
 </div>
-<h3 class="font-headline text-2xl text-white mb-4">Mirada Sublime</h3>
-<p class="text-sm text-on-surface font-light">Lifting, pestañas pelo extra y diseño de cejas HD de impacto profundo.</p>
+<h3 class="font-headline text-2xl text-[#4a2c31] mb-4">Mirada Sublime</h3>
+<p class="text-sm text-on-surface font-light">Lifting, pestañas pelo a pelo y diseño de cejas sutiles y elegantes.</p>
 </div>
 
 <!-- Treatments -->
-<div class="md:col-span-2 bg-gradient-to-br from-primary-container to-background text-on-primary p-10 rounded-2xl relative overflow-hidden shadow-2xl border border-primary/20 hover:border-primary/60 transition-colors" data-aos="fade-up" data-aos-delay="400">
+<div class="md:col-span-2 bg-[#d17c91]/90 backdrop-blur-md text-white p-10 rounded-3xl relative overflow-hidden shadow-xl hover:shadow-[0_20px_40px_rgba(209,124,145,0.3)] transition-all transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="400">
 <div class="relative z-10 flex flex-col justify-between h-full">
 <div>
-<h3 class="font-headline text-3xl mb-4">Alizados & Botox Premium</h3>
-<p class="opacity-90 max-w-md font-light">Tecnología molecular capilar para brillos espejo y una caída espectacular. Restauración intensiva anti-frizz.</p>
+<h3 class="font-headline text-3xl mb-4 text-white">Alizados & Botox Premium</h3>
+<p class="opacity-95 max-w-md font-light text-white/90">Tecnología molecular capilar para brillos espejo y una caída espectacular. Restauración intensiva aromaterapéutica.</p>
 </div>
-<button class="mt-8 self-start border border-secondary px-8 py-3 rounded-full font-label text-xs tracking-widest hover:bg-secondary hover:text-background transition-all uppercase font-bold">
+<button class="mt-8 self-start border-2 border-white/80 px-8 py-3 rounded-full font-label text-xs tracking-widest hover:bg-white hover:text-primary transition-all uppercase font-bold shadow-sm">
     Descubrir la tecnología
 </button>
 </div>
-<!-- Floral overlay -->
-<div class="absolute right-0 bottom-0 top-0 w-2/3 opacity-30 mix-blend-screen pointer-events-none bg-[url('https://images.unsplash.com/photo-1549448043-41a6b0c2a229?q=80&w=1200&auto=format&fit=crop')] bg-cover bg-center"></div>
-<div class="absolute inset-0 bg-gradient-to-r from-primary-container via-transparent to-transparent"></div>
+<!-- Texture overlay -->
+<div class="absolute right-0 bottom-0 top-0 w-2/3 opacity-20 pointer-events-none mix-blend-plus-lighter bg-[url('https://images.unsplash.com/photo-1544079870-7607a3c3ce66?q=80&w=1200&auto=format&fit=crop')] bg-cover bg-center"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-[#d17c91] via-transparent to-transparent"></div>
 </div>
 
 <!-- Extra Mini Cards -->
-<div class="glass-panel p-8 rounded-2xl flex items-center gap-6 shadow-xl" data-aos="fade-left" data-aos-delay="500">
-<span class="material-symbols-outlined text-4xl text-secondary">brush</span>
+<div class="glass-panel p-8 rounded-3xl flex items-center gap-6 shadow-md" data-aos="fade-up" data-aos-delay="500">
+<span class="material-symbols-outlined text-4xl text-primary">brush</span>
 <div>
-<h4 class="font-headline text-xl text-white">Depilación</h4>
+<h4 class="font-headline text-xl text-[#4a2c31]">Depilación</h4>
 <p class="text-xs text-secondary uppercase tracking-widest font-bold">Cera e Hilo</p>
 </div>
 </div>
-<div class="glass-panel p-8 rounded-2xl flex items-center gap-6 shadow-xl" data-aos="fade-left" data-aos-delay="600">
-<span class="material-symbols-outlined text-4xl text-secondary">face</span>
+<div class="glass-panel p-8 rounded-3xl flex items-center gap-6 shadow-md" data-aos="fade-up" data-aos-delay="600">
+<span class="material-symbols-outlined text-4xl text-primary">face_retouching_natural</span>
 <div>
-<h4 class="font-headline text-xl text-white">Maquillaje</h4>
-<p class="text-xs text-secondary uppercase tracking-widest font-bold">Noche & Eventos</p>
+<h4 class="font-headline text-xl text-[#4a2c31]">Maquillaje</h4>
+<p class="text-xs text-secondary uppercase tracking-widest font-bold">Novias & Eventos</p>
 </div>
 </div>
-<div class="glass-panel p-8 rounded-2xl flex items-center gap-6 shadow-xl" data-aos="fade-left" data-aos-delay="700">
-<span class="material-symbols-outlined text-4xl text-secondary">shopping_bag</span>
+<div class="glass-panel p-8 rounded-3xl flex items-center gap-6 shadow-md" data-aos="fade-up" data-aos-delay="700">
+<span class="material-symbols-outlined text-4xl text-primary">shopping_bag</span>
 <div>
-<h4 class="font-headline text-xl text-white">Boutique</h4>
-<p class="text-xs text-secondary uppercase tracking-widest font-bold">Essences</p>
+<h4 class="font-headline text-xl text-[#4a2c31]">Boutique</h4>
+<p class="text-xs text-secondary uppercase tracking-widest font-bold">Florals & Skin</p>
 </div>
 </div>
 </div>
@@ -201,35 +203,33 @@ tailwind.config = {
 </section>
 
 <!-- Philosophy Section -->
-<section class="py-32 floral-bg relative" id="about">
-<div class="absolute inset-0 bg-background/80"></div>
-<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-24 items-center relative z-10">
+<section class="py-32 relative" id="about">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-24 items-center relative z-10 glass-panel rounded-[3rem] p-16">
 <div class="relative" data-aos="zoom-out-right">
-<div class="relative z-10 border-l-[8px] border-b-[8px] border-primary shadow-2xl overflow-hidden rounded-bl-3xl">
+<div class="relative z-10 border-[12px] border-white shadow-[0_20px_50px_rgba(209,124,145,0.2)] overflow-hidden rounded-[2rem] transform -rotate-3 hover:rotate-0 transition-transform duration-700">
 <img alt="Stylist working" class="w-full h-auto" src="https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1200&auto=format&fit=crop"/>
-<div class="absolute inset-0 bg-black/20"></div>
 </div>
-<div class="absolute -top-10 -right-10 w-64 h-64 bg-primary/20 rounded-full blur-3xl -z-10 animate-pulse"></div>
+<div class="absolute -top-10 -right-10 w-64 h-64 bg-primary-container/80 rounded-full blur-3xl -z-10 animate-pulse"></div>
 </div>
 <div data-aos="fade-up">
-<span class="font-label text-secondary uppercase tracking-[0.3em] text-sm font-bold flex items-center gap-3">
-    <div class="w-8 h-px bg-secondary"></div> Filosofía KAMIL'S
+<span class="font-label text-primary uppercase tracking-[0.3em] text-sm font-bold flex items-center gap-3">
+    <div class="w-8 h-[2px] bg-primary"></div> Filosofía KAMIL'S
 </span>
-<h2 class="font-headline text-5xl text-white mt-6 mb-8 leading-tight">El arte oscuro<br>de la personalización</h2>
-<p class="text-secondary text-xl leading-relaxed mb-6 italic font-headline border-l-2 border-primary pl-6">
-    "En KAMIL'S, la oscuridad es nuestro lienzo para que tu luz y colores cobren vida de manera extraordinaria."
+<h2 class="font-headline text-5xl text-[#4a2c31] mt-6 mb-8 leading-tight">La esencia floral<br>de la personalización</h2>
+<p class="text-secondary text-xl leading-relaxed mb-6 italic font-headline border-l-4 border-primary pl-6">
+    "En KAMIL'S creemos que cada cliente es como una flor única: merece el cuidado, la luz y los detalles correctos para florecer hermosamente."
 </p>
 <p class="text-on-surface leading-relaxed mb-10 font-light text-lg">
-    Nuestro enfoque 'Exclusivo para ti' garantiza una experiencia inmersiva. Diagnósticos expertos en un entorno íntimo para asegurar que salgas al mundo revelando la mejor y más atrevida versión de tu perfil estético.
+    Nuestro enfoque 'Exclusivo para ti' se caracteriza por el trato suave, la luz natural abundante y una fragancia floral romántica que acompaña cada cita. Te ayudamos a descubrir tu estilo romántico y reluciente.
 </p>
-<div class="grid grid-cols-2 gap-8 pt-8 border-t border-outline">
+<div class="grid grid-cols-2 gap-8 pt-8 border-t border-primary/20">
 <div data-aos="fade-up" data-aos-delay="200">
-<span class="block font-headline text-5xl text-white mb-2">10+</span>
-<span class="font-label text-sm uppercase tracking-widest text-primary font-bold">Años de Excelencia</span>
+<span class="block font-headline text-5xl text-primary mb-2">10+</span>
+<span class="font-label text-sm uppercase tracking-widest text-[#4a2c31] font-bold">Años Floreciendo</span>
 </div>
 <div data-aos="fade-up" data-aos-delay="400">
-<span class="block font-headline text-5xl text-white mb-2">5k+</span>
-<span class="font-label text-sm uppercase tracking-widest text-primary font-bold">Estilos Soñados</span>
+<span class="block font-headline text-5xl text-primary mb-2">5k+</span>
+<span class="font-label text-sm uppercase tracking-widest text-[#4a2c31] font-bold">Clientes Felices</span>
 </div>
 </div>
 </div>
@@ -237,54 +237,50 @@ tailwind.config = {
 </section>
 
 <!-- Location & Contact -->
-<section class="py-32 bg-surface" id="contact">
+<section class="py-32" id="contact">
 <div class="max-w-7xl mx-auto px-8">
-<div class="bg-surface-variant rounded-3xl overflow-hidden grid grid-cols-1 md:grid-cols-2 shadow-2xl border border-outline" data-aos="fade-up" data-aos-duration="1000">
+<div class="glass-panel p-2 rounded-[3rem] overflow-hidden shadow-2xl" data-aos="fade-up" data-aos-duration="1000">
+<div class="bg-white/80 backdrop-blur-3xl rounded-[2.5rem] grid grid-cols-1 md:grid-cols-2 overflow-hidden border border-white/50">
 <div class="p-16 flex flex-col justify-center relative">
-<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 blur-3xl rounded-full"></div>
-<h2 class="font-headline text-4xl text-white mb-10">Encuéntranos en<br>Yanahuara</h2>
+<h2 class="font-headline text-4xl text-[#4a2c31] mb-10">Encuéntranos en<br>Yanahuara</h2>
 <div class="space-y-10 relative z-10">
 <div class="flex items-start gap-5 hover:translate-x-2 transition-transform">
-<div class="w-12 h-12 bg-background flex items-center justify-center rounded-full border border-primary/30">
-    <span class="material-symbols-outlined text-primary">location_on</span>
+<div class="w-14 h-14 bg-primary-container flex items-center justify-center rounded-full text-primary shadow-sm">
+    <span class="material-symbols-outlined">location_on</span>
 </div>
 <div>
-<p class="font-bold text-white text-lg tracking-wide uppercase text-sm mb-1">Dirección</p>
+<p class="font-bold text-[#4a2c31] text-lg tracking-wide uppercase text-sm mb-1">Dirección</p>
 <p class="text-on-surface font-light">Calle Antiquilla 349,<br>Yanahuara - Arequipa</p>
 </div>
 </div>
 <div class="flex items-start gap-5 hover:translate-x-2 transition-transform">
-<div class="w-12 h-12 bg-background flex items-center justify-center rounded-full border border-primary/30">
-    <span class="material-symbols-outlined text-primary">call</span>
+<div class="w-14 h-14 bg-primary-container flex items-center justify-center rounded-full text-primary shadow-sm">
+    <span class="material-symbols-outlined">call</span>
 </div>
 <div>
-<p class="font-bold text-white text-lg tracking-wide uppercase text-sm mb-1">Citas / WhatsApp</p>
+<p class="font-bold text-[#4a2c31] text-lg tracking-wide uppercase text-sm mb-1">Citas / WhatsApp</p>
 <p class="text-on-surface font-light text-xl">983 288 877</p>
 </div>
 </div>
 <div class="flex items-start gap-5 hover:translate-x-2 transition-transform">
-<div class="w-12 h-12 bg-background flex items-center justify-center rounded-full border border-primary/30">
-    <span class="material-symbols-outlined text-primary">schedule</span>
+<div class="w-14 h-14 bg-primary-container flex items-center justify-center rounded-full text-primary shadow-sm">
+    <span class="material-symbols-outlined">schedule</span>
 </div>
 <div>
-<p class="font-bold text-white text-lg tracking-wide uppercase text-sm mb-1">Horario Premium</p>
+<p class="font-bold text-[#4a2c31] text-lg tracking-wide uppercase text-sm mb-1">Horarios</p>
 <p class="text-on-surface font-light">Lunes - Sábado<br><span class="text-primary font-bold">9:00 AM - 8:00 PM</span></p>
 </div>
 </div>
 </div>
 <div class="mt-14 flex gap-4">
-<a class="w-12 h-12 rounded-full border border-primary flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all btn-glow shadow-lg" href="#">
+<a class="w-12 h-12 rounded-full bg-white border border-outline flex items-center justify-center text-primary hover:bg-primary-container transition-all hover:scale-110 shadow-sm" href="#">
 <span class="material-symbols-outlined">share</span>
 </a>
-<a class="w-12 h-12 rounded-full border border-primary flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all btn-glow shadow-lg" href="#">
-<span class="material-symbols-outlined">photo_camera</span>
-</a>
 </div>
 </div>
-<div class="h-[600px] md:h-auto relative bg-background border-l border-outline">
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3827.608758814421!2d-71.5516084!3d-16.3938497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91424a5aba3cd137%3A0xe5cdb744d56df423!2sYanahuara%2C%20Arequipa!5e0!3m2!1ses!2spe!4v1700000000000!5m2!1ses!2spe" class="absolute inset-0 w-full h-full border-0 filter opacity-80 contrast-125 saturate-50 hover:saturate-100 hover:opacity-100 transition-all duration-700" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-<!-- Gradient overlay to blend map edges -->
-<div class="absolute inset-0 pointer-events-none shadow-[inset_0_0_50px_rgba(8,6,7,1)]"></div>
+<div class="h-[600px] md:h-auto relative bg-background border-l border-outline/20">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3827.608758814421!2d-71.5516084!3d-16.3938497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91424a5aba3cd137%3A0xe5cdb744d56df423!2sYanahuara%2C%20Arequipa!5e0!3m2!1ses!2spe!4v1700000000000!5m2!1ses!2spe" class="absolute inset-0 w-full h-full border-0 filter opacity-80 mix-blend-multiply hover:opacity-100 hover:mix-blend-normal transition-all duration-700 saturate-50 hover:saturate-100" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
 </div>
 </div>
 </div>
@@ -292,38 +288,35 @@ tailwind.config = {
 </main>
 
 <!-- Footer -->
-<footer class="bg-background w-full py-16 px-8 border-t border-outline">
+<footer class="bg-white/80 backdrop-blur-xl w-full py-16 px-8 border-t border-outline/30 text-center md:text-left">
 <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8 max-w-7xl mx-auto">
 <div>
 <div class="text-3xl font-headline tracking-widest text-primary mb-4 font-bold">KAMIL'S</div>
-<p class="font-sans text-xs uppercase tracking-widest text-on-surface/50 max-w-md">
-    © 2026 KAMIL'S Boutique Salon.<br>Todos los derechos reservados.
+<p class="font-sans text-xs uppercase tracking-widest text-[#4a2c31]/60 mx-auto md:mx-0 max-w-md">
+    © 2026 KAMIL'S. Boutique Floral Salon.<br>Todos los derechos reservados.
 </p>
 </div>
-<div class="flex md:justify-end gap-10">
-<a class="font-sans text-xs uppercase tracking-widest text-on-surface hover:text-primary transition-colors duration-300" href="#">Instagram</a>
-<a class="font-sans text-xs uppercase tracking-widest text-on-surface hover:text-primary transition-colors duration-300" href="#">Facebook</a>
-<a class="font-sans text-xs uppercase tracking-widest text-on-surface hover:text-primary transition-colors duration-300" href="#contact">WhatsApp</a>
+<div class="flex justify-center md:justify-end gap-10">
+<a class="font-sans text-xs uppercase tracking-widest text-[#4a2c31] font-bold hover:text-primary transition-colors duration-300" href="#">Instagram</a>
+<a class="font-sans text-xs uppercase tracking-widest text-[#4a2c31] font-bold hover:text-primary transition-colors duration-300" href="#">Facebook</a>
+<a class="font-sans text-xs uppercase tracking-widest text-[#4a2c31] font-bold hover:text-primary transition-colors duration-300" href="#contact">WhatsApp</a>
 </div>
 </div>
 </footer>
 
 <!-- Floating WhatsApp Button -->
-<a href="https://wa.me/51983288877" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 bg-[#25D366] text-white p-4 rounded-full shadow-[0_0_20px_rgba(37,211,102,0.4)] hover:scale-110 hover:shadow-[0_0_30px_rgba(37,211,102,0.7)] transition-all duration-300 z-50 flex items-center justify-center m-2 group">
+<a href="https://wa.me/51983288877" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 bg-[#25D366] text-white p-4 rounded-full shadow-[0_10px_25px_rgba(37,211,102,0.5)] hover:scale-110 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(37,211,102,0.7)] transition-all duration-300 z-50 flex items-center justify-center m-2 group">
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
         <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c-.003 1.396.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
     </svg>
-    <div class="absolute right-20 bg-surface-variant text-white px-4 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap text-sm font-bold border border-primary/20">
-        Reserva fácil por chat
-    </div>
 </a>
 
 <!-- AOS Initialization -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     AOS.init({
-        once: true, // whether animation should happen only once - while scrolling down
-        offset: 120, // offset (in px) from the original trigger point
+        once: true,
+        offset: 120,
         easing: 'ease-out-cubic',
     });
 </script>
