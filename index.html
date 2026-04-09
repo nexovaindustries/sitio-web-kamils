@@ -45,13 +45,12 @@ tailwind.config = {
     font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
 }
 /* Abundant Light Pink & White Roses Background */
-.floral-bg {
+.floral-bg-layer {
     background-color: #fdfafb;
     background-image: 
         url('background.png'); 
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
 }
 .floral-bg-overlay {
     background-color: rgba(255, 255, 255, 0.45); /* White tint over the raw flowers to keep text readable */
@@ -71,10 +70,11 @@ tailwind.config = {
 </style>
 </head>
 
-<body class="text-on-background font-body selection:bg-primary selection:text-white antialiased overflow-x-hidden floral-bg">
+<body class="text-on-background font-body selection:bg-primary selection:text-white antialiased overflow-x-hidden relative">
 
-<!-- Floral Background Constant Overlay Layer -->
-<div class="fixed inset-0 floral-bg-overlay z-[-1] pointer-events-none"></div>
+<!-- GPU Optimized Fixed Floral Background Layers -->
+<div class="fixed inset-0 z-[-2] pointer-events-none floral-bg-layer" style="transform: translateZ(0);"></div>
+<div class="fixed inset-0 floral-bg-overlay z-[-1] pointer-events-none" style="transform: translateZ(0);"></div>
 
 <!-- TopAppBar Glassmorphism -->
 <nav class="fixed top-0 w-full z-50 glass-panel shadow-sm" data-aos="fade-down" data-aos-duration="1000">
