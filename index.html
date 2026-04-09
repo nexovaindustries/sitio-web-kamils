@@ -1,57 +1,307 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sitio web oficial de Kamil's. Descubre nuestros servicios, proyectos y filosofía.">
-    <title>Kamil's | Innovación y Diseño</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Manrope:wght@300;400;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-tint": "#8c4b55",
+                    "surface-dim": "#dbdad9",
+                    "tertiary-fixed": "#e4e2e2",
+                    "on-primary-container": "#fffbff",
+                    "error": "#ba1a1a",
+                    "tertiary-container": "#757474",
+                    "secondary-fixed": "#ffdea5",
+                    "on-background": "#1b1c1b",
+                    "secondary-container": "#fed488",
+                    "surface-container-highest": "#e4e2e1",
+                    "on-surface": "#1b1c1b",
+                    "inverse-surface": "#303030",
+                    "outline-variant": "#d7c1c3",
+                    "surface-variant": "#e4e2e1",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed": "#1b1c1c",
+                    "on-secondary-fixed": "#261900",
+                    "on-surface-variant": "#524345",
+                    "tertiary-fixed-dim": "#c8c6c6",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#e9c176",
+                    "on-primary": "#ffffff",
+                    "primary-fixed-dim": "#ffb2bc",
+                    "secondary": "#775a19",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#fefcfb",
+                    "on-primary-fixed": "#3a0915",
+                    "tertiary": "#5c5c5c",
+                    "primary-container": "#a6606b",
+                    "surface-container-low": "#f5f3f2",
+                    "background": "#fbf9f8",
+                    "primary": "#8a4853",
+                    "surface-container-high": "#e9e8e7",
+                    "error-container": "#ffdad6",
+                    "inverse-primary": "#ffb2bc",
+                    "on-secondary-fixed-variant": "#5d4201",
+                    "inverse-on-surface": "#f2f0ef",
+                    "primary-fixed": "#ffd9dd",
+                    "surface": "#fbf9f8",
+                    "on-primary-fixed-variant": "#70343e",
+                    "on-tertiary-fixed-variant": "#474747",
+                    "on-secondary": "#ffffff",
+                    "surface-container": "#efedec",
+                    "on-secondary-container": "#785a1a",
+                    "outline": "#857374",
+                    "surface-bright": "#fbf9f8",
+                    "on-error": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Noto Serif"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.marble-bg {
+    background-image: linear-gradient(rgba(251, 249, 248, 0.9), rgba(251, 249, 248, 0.9)), url(https://lh3.googleusercontent.com/aida-public/AB6AXuBaWfiWxM_rxfJctDvzl2-PE8V2LPjfWa1I6lgv_6X9sIgdF_QBUBgEfV6cg78WlC0cyTKvDiHpXK3tmW4slHvbYfS9qytcpaaJnGsUa78rmYdctbKER37mtcZI7Rd502UiMfj6sxVqSYvdnGIj-iJY2l-TxAL-z0zvrWMGeRTQ60spDmjIu9GUJc0GUfOSmlVvG5rgvmfj8kWRDI6SUndnXKgcvUYyycFDJstbWCIYECVTIxYOgXTJ2ckvUje71oxuH6UFTRNFphTy);
+    background-size: cover;
+    background-blend-mode: overlay
+    }</style>
 </head>
-<body>
-    <div class="blob-bg"></div>
-    <div class="blob-bg blob-2"></div>
-    
-    <header class="glass-header">
-        <nav class="nav-container">
-            <div class="logo">Kamil's.</div>
-            <ul class="nav-links">
-                <li><a href="#inicio" id="link-inicio">Inicio</a></li>
-                <li><a href="#servicios" id="link-servicios">Servicios</a></li>
-                <li><a href="#contacto" id="link-contacto" class="btn-primary">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <section id="inicio" class="hero-section">
-            <div class="hero-content">
-                <h1 class="hero-title">Elevando el <span class="gradient-text">Futuro</span> Digital</h1>
-                <p class="hero-subtitle">Diseños premium, soluciones dinámicas y experiencias memorables para el mundo moderno.</p>
-                <div class="hero-cta">
-                    <a href="#servicios" class="btn-primary cta-btn" id="btn-explore">Explorar</a>
-                    <a href="#contacto" class="btn-secondary cta-btn" id="btn-contact">Conócenos</a>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="glass-card mockup-card">
-                    <div class="card-header">
-                        <span class="dot red"></span>
-                        <span class="dot yellow"></span>
-                        <span class="dot green"></span>
+<body class="bg-background text-on-background font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#fbf9f8]/80 dark:bg-stone-900/80 backdrop-blur-md">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-7xl mx-auto">
+<div class="text-2xl font-headline tracking-widest text-[#8a4853] dark:text-[#a6606b]">KAMIL'S</div>
+<div class="hidden md:flex items-center gap-10">
+<a class="font-serif text-lg tracking-wide text-[#8a4853] dark:text-[#dbdad9] hover:text-[#775a19] transition-colors duration-300" href="#services">Services</a>
+<a class="font-serif text-lg tracking-wide text-[#8a4853] dark:text-[#dbdad9] hover:text-[#775a19] transition-colors duration-300" href="#about">About Us</a>
+<a class="font-serif text-lg tracking-wide text-[#8a4853] dark:text-[#dbdad9] hover:text-[#775a19] transition-colors duration-300" href="#contact">Contact</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-md font-label text-sm uppercase tracking-widest scale-95 active:opacity-80 transition-all">
+                Reservar Cita
+            </button>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="relative min-height-[921px] flex items-center pt-24 overflow-hidden">
+<div class="absolute top-0 right-0 w-1/2 h-full opacity-20 pointer-events-none">
+<img alt="Decorative" class="w-full h-full object-cover" data-alt="Soft focused close up of pink rose petals with elegant lighting and ethereal atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1Y2fE2AzldA-Afpba8YRuyYC6YylqWspRy9rRxc8D8_s4dIsoUuP7TICgL_KxKgi95CGMrq6wRL8DzTb9w98sMxckHVg0gcz7F25-Dmqo48dZnex1nbhax0HO06Mu8Hp6X7OAayJfEdgu9pxLUm4v_SiiYcizRdgEFWe6Ze0GJ2OyZA5WFXd8xz560z1sEN3JoCVrdeOZzDOOMFp6a7CD-KcYRRz1yn88hlpUSGidcLSaXTH_BVzIj8bV9pZLNBd1KKjx2u5jknkt"/>
+</div>
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-12 gap-12 items-center relative z-10">
+<div class="md:col-span-7">
+<h1 class="font-headline text-[5rem] md:text-[8rem] leading-none text-primary mb-4 opacity-90 relative">
+<span class="absolute -left-12 -top-12 text-[12rem] opacity-5 text-secondary select-none">K</span>
+                        KAMIL'S
+                    </h1>
+<p class="font-headline text-3xl md:text-4xl text-secondary mb-8 italic">Exclusivo para ti</p>
+<div class="max-w-md mb-12 text-on-surface-variant text-lg leading-relaxed">
+                        Elevando la belleza a una forma de arte. Un refugio de sofisticación en el corazón de Yanahuara, diseñado para transformar tu esencia.
                     </div>
-                    <div class="card-body">
-                        <h2>Bienvenido a Kamil's</h2>
-                        <p>Visualizamos lo invisible.</p>
-                        <div class="pulse-ring"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <script src="script.js"></script>
-</body>
-</html>
+<button class="bg-primary text-on-primary px-10 py-4 rounded-md font-label text-lg tracking-widest hover:bg-primary-container transition-all flex items-center gap-3">
+                        RESERVAR CITA
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="md:col-span-5 relative">
+<div class="aspect-[3/4] overflow-hidden rounded-xl shadow-2xl relative">
+<img alt="Luxury Salon" class="w-full h-full object-cover" data-alt="Elegant luxury hair salon interior with gold accents, marble floors, and soft lighting in a high-end boutique setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd73MckPf2sEFO8dij-06rCgbXvMtiol7g4baFcCXyChMtEmF0uq4n98CipPDaElj3jaZ55OvVOdwwq3B2t-UhSQda4UwZcKDW5oUh5ku02Bz9ul1P511ipCHJQD5FsUOCanEfLGqWcYy35J2i4_95R1t-x_Td4vWnSJDggu6rSRuYJfcbrXyiRaHCEf2zpmlTMb3j_08Hyx2wqDUBGqFd5-ceXtFb8WtB_qCMZR-XMZM9sbwu0y4KRsVBJZVj70uKst1GtjtaidU_"/>
+</div>
+<!-- Floral Overlap Decor -->
+<div class="absolute -bottom-10 -left-10 w-48 h-48 opacity-40">
+<img alt="Floral Decor" data-alt="Single delicate pink rose on a clean white background with soft shadows for editorial layering" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMMfWA0WIDLw8DDTZdVQQoSjWTSotJRU-Z4FkZn2SZPGbeL2DQNTXkBWYZ3vuVw6uU07OJK4MnR044uQQMiyQUxfA-Ha39-fdlB0tjc7EcWMZvjfJJb9DarC5KDALOscnU7h-dpXP6twVFOWrIixof0qBg_hOvmpA0k6ToTqzPecCKIfYM9db2uHTwsjtuB2hGMHyhbsv7EOXXY6neBkKspNXedjs0DJwcR5SJ0la3ti0hmYKZm4LFwrUpFnTIU39V4ew83P1kULT7"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Services Section: Bento-ish Grid -->
+<section class="py-24 bg-surface-container-low" id="services">
+<div class="max-w-7xl mx-auto px-8">
+<div class="mb-20 text-center">
+<span class="font-label text-secondary uppercase tracking-[0.3em] text-sm">Nuestros Servicios</span>
+<h2 class="font-headline text-5xl text-primary mt-4">Arte en cada detalle</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Color & Tech -->
+<div class="md:col-span-2 bg-surface-container-lowest p-10 rounded-xl flex flex-col justify-between group overflow-hidden relative">
+<div class="relative z-10">
+<h3 class="font-headline text-3xl text-primary mb-4">Técnicas de Color</h3>
+<p class="text-on-surface-variant max-w-sm mb-6">Balayage, baby lights y californianas diseñadas para iluminar tu rostro con naturalidad.</p>
+<ul class="space-y-2 text-secondary font-semibold">
+<li>• Balayage Signature</li>
+<li>• Baby Lights</li>
+<li>• Californianas</li>
+</ul>
+</div>
+<img alt="Hair color" class="absolute right-0 bottom-0 w-1/2 h-full object-cover opacity-20 group-hover:opacity-40 transition-opacity" data-alt="Professional hair stylist applying color to a client with precision in a bright studio environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtuDD3M33v1MLSeCkY14hkXTrn67CGJYQsvt3yRaoDRYH07l8qWImPZjHYHlsoynAyiKQ6YA7F-7ZzL2b43bnN89C2lxl0LfXLBTG-Bbk2hBP-lHv2ngbcW6U5DJEOrdV5r6weirn-CA2OEOQPYrQg18KU3DzTzpJ2L3nqG99vEIsLHtxVKd6yN7Bg-vls-w1gfCSSizap04vY1JZnXT09ZtvkPLqtM0y3G4Qgbc5fL93m43zgxEk_ir3oxZUYPwWkKV-PGAFLqLDu"/>
+</div>
+<!-- Nails -->
+<div class="bg-surface p-10 rounded-xl border border-outline-variant/10 shadow-sm flex flex-col justify-center text-center">
+<div class="mb-6">
+<span class="material-symbols-outlined text-4xl text-secondary">spa</span>
+</div>
+<h3 class="font-headline text-2xl text-primary mb-4">Manicure &amp; Nails</h3>
+<p class="text-sm text-on-surface-variant">Uñas acrílicas, en gel y pedicura spa para manos que cuentan una historia de elegancia.</p>
+</div>
+<!-- Pestañas & Cejas -->
+<div class="bg-surface p-10 rounded-xl border border-outline-variant/10 shadow-sm flex flex-col justify-center text-center">
+<div class="mb-6">
+<span class="material-symbols-outlined text-4xl text-secondary">visibility</span>
+</div>
+<h3 class="font-headline text-2xl text-primary mb-4">Mirada Sublime</h3>
+<p class="text-sm text-on-surface-variant">Rizado, tinturación, pestañas 1x1 y perfilado de cejas experto.</p>
+</div>
+<!-- Treatments -->
+<div class="md:col-span-2 bg-primary text-on-primary p-10 rounded-xl relative overflow-hidden">
+<div class="relative z-10 flex flex-col justify-between h-full">
+<div>
+<h3 class="font-headline text-3xl mb-4">Alizados &amp; Botox</h3>
+<p class="opacity-90 max-w-md">Tratamientos capilares, laceados y ondulados con tecnología de vanguardia para la salud de tu fibra capilar.</p>
+</div>
+<button class="mt-8 self-start border border-on-primary/30 px-6 py-2 rounded font-label text-xs tracking-widest hover:bg-on-primary hover:text-primary transition-all">DESCUBRIR MÁS</button>
+</div>
+<!-- Texture mask placeholder -->
+<div class="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/marble-similar.png')]"></div>
+</div>
+<!-- Depilación -->
+<div class="bg-surface-container-lowest p-8 rounded-xl flex items-center gap-6">
+<span class="material-symbols-outlined text-3xl text-secondary">brush</span>
+<div>
+<h4 class="font-headline text-xl text-primary">Depilación</h4>
+<p class="text-xs text-on-surface-variant uppercase tracking-tighter">Cera e Hilo</p>
+</div>
+</div>
+<!-- Peinados -->
+<div class="bg-surface-container-lowest p-8 rounded-xl flex items-center gap-6">
+<span class="material-symbols-outlined text-3xl text-secondary">face</span>
+<div>
+<h4 class="font-headline text-xl text-primary">Maquillaje</h4>
+<p class="text-xs text-on-surface-variant uppercase tracking-tighter">Novias y Eventos</p>
+</div>
+</div>
+<!-- Venta -->
+<div class="bg-surface-container-lowest p-8 rounded-xl flex items-center gap-6">
+<span class="material-symbols-outlined text-3xl text-secondary">shopping_bag</span>
+<div>
+<h4 class="font-headline text-xl text-primary">Boutique</h4>
+<p class="text-xs text-on-surface-variant uppercase tracking-tighter">Productos Premium</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Philosophy Section -->
+<section class="py-32 marble-bg" id="about">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
+<div class="relative">
+<div class="relative z-10 border-[12px] border-white shadow-2xl">
+<img alt="Stylist working" class="w-full h-auto" data-alt="Professional female hair stylist focused on creating a beautiful hairstyle for a client in a bright airy studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQkOLhBtffGg7x3zEgnqRxlS74hLKnKnPfvcWN1y6zCaAwL19fERAFPR1Pk9Kmm8yo-ENNt5a3kN5guHk3Xf0zJj2EZbmOKAAddmadRSc0-w9UUJpyUm1fZxLVJdnpJzUtayhtZHoTDssrQoK-cejZ_5RsC43-kH2Omdz1EVYSDdVPUMm8mpy9mwSpjNs2yBnp0kkPJctwKS5XcrAKGHSZ95f7-y6xo_ULhqo8vG608AVjOtV-qAAbJphfCMESvayfUzlbRr5gUT0v"/>
+</div>
+<div class="absolute -top-10 -right-10 w-64 h-64 bg-secondary-fixed/30 rounded-full blur-3xl -z-10"></div>
+</div>
+<div>
+<span class="font-label text-secondary uppercase tracking-[0.3em] text-sm">Filosofía KAMIL'S</span>
+<h2 class="font-headline text-5xl text-primary mt-4 mb-8">El arte de la personalización</h2>
+<p class="text-on-surface-variant text-lg leading-relaxed mb-6 italic font-headline">
+                        "En KAMIL'S, no seguimos tendencias; creamos la mejor versión de ti misma."
+                    </p>
+<p class="text-on-surface-variant leading-relaxed mb-8">
+                        Nuestro enfoque 'Exclusivo para ti' garantiza que cada visita sea una experiencia personalizada. Entendemos que tu cabello y tu piel son únicos, por lo que cada tratamiento comienza con un diagnóstico experto para asegurar resultados extraordinarios.
+                    </p>
+<div class="grid grid-cols-2 gap-8 pt-8 border-t border-outline-variant/30">
+<div>
+<span class="block font-headline text-3xl text-secondary">10+</span>
+<span class="font-label text-xs uppercase tracking-widest opacity-60">Años de Excelencia</span>
+</div>
+<div>
+<span class="block font-headline text-3xl text-secondary">5k+</span>
+<span class="font-label text-xs uppercase tracking-widest opacity-60">Clientes Felices</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Location & Contact -->
+<section class="py-24 bg-surface" id="contact">
+<div class="max-w-7xl mx-auto px-8">
+<div class="bg-surface-container-highest rounded-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
+<div class="p-16 flex flex-col justify-center">
+<h2 class="font-headline text-4xl text-primary mb-10">Encuéntranos en Yanahuara</h2>
+<div class="space-y-8">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary">location_on</span>
+<div>
+<p class="font-bold text-on-surface">Dirección</p>
+<p class="text-on-surface-variant">Calle Antiquilla 349, Yanahuara - Arequipa</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary">call</span>
+<div>
+<p class="font-bold text-on-surface">WhatsApp</p>
+<p class="text-on-surface-variant">983 288 877</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary">schedule</span>
+<div>
+<p class="font-bold text-on-surface">Horario</p>
+<p class="text-on-surface-variant">Lunes - Sábado: 9:00 AM - 8:00 PM</p>
+</div>
+</div>
+</div>
+<div class="mt-12 flex gap-4">
+<a class="w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined">share</span>
+</a>
+</div>
+</div>
+<div class="h-[500px] md:h-auto relative bg-surface-dim">
+<!-- Map Placeholder visual -->
+<div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=1200&amp;q=80')] bg-cover bg-center grayscale opacity-50" data-alt="Monochrome minimalist map background showing an urban layout for a contact section" data-location="Yanahuara, Arequipa" style=""></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-white/90 backdrop-blur p-4 rounded shadow-lg flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<span class="font-label text-xs font-bold uppercase tracking-widest text-primary">KAMIL'S Yanahuara</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#f5f3f2] dark:bg-stone-950 w-full py-12 px-8">
+<div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8 max-w-7xl mx-auto">
+<div>
+<div class="text-lg font-headline text-[#8a4853] mb-4">KAMIL'S</div>
+<p class="font-sans text-xs uppercase tracking-tighter text-[#8a4853]/70 dark:text-[#dbdad9]/50 max-w-md">
+                    © 2024 KAMIL'S Beauty Salon. Calle Antiquilla 349 - Yanahuara. T: 983 288 877
+                </p>
+</div>
+<div class="flex md:justify-end gap-10">
+<a class="font-sans text-xs uppercase tracking-tighter text-[#8a4853]/70 dark:text-[#dbdad9]/50 hover:translate-y-[-2px] transition-transform" href="#">Instagram</a>
+<a class="font-sans text-xs uppercase tracking-tighter text-[#8a4853]/70 dark:text-[#dbdad9]/50 hover:translate-y-[-2px] transition-transform" href="#">Facebook</a>
+<a class="font-sans text-xs uppercase tracking-tighter text-[#8a4853]/70 dark:text-[#dbdad9]/50 hover:translate-y-[-2px] transition-transform" href="#">WhatsApp</a>
+</div>
+</div>
+</footer>
+</body></html>
