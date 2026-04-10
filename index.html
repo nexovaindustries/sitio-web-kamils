@@ -89,7 +89,7 @@ tailwind.config = {
         <a class="font-serif text-lg tracking-wide text-on-background hover:text-primary transition-colors duration-300" href="#contact">Contacto</a>
     </div>
     <div class="flex items-center gap-3">
-        <a href="https://wa.me/51983288877" target="_blank" class="bg-primary text-on-primary px-4 md:px-6 py-2 rounded-full font-label text-xs md:text-sm uppercase tracking-widest btn-glow hover:-translate-y-0.5 transition-all duration-300">
+        <a href="https://wa.me/51983288877" target="_blank" rel="noopener noreferrer" style="touch-action:manipulation;" class="bg-primary text-on-primary px-4 md:px-6 py-2.5 rounded-full font-label text-xs md:text-sm uppercase tracking-widest btn-glow hover:-translate-y-0.5 transition-all duration-300">
             Reservar
         </a>
         <!-- Hamburger -->
@@ -104,7 +104,12 @@ tailwind.config = {
 <div id="mobile-menu" class="flex-col gap-0 bg-white/95 backdrop-blur-xl border-t border-outline/30 md:hidden">
     <a class="font-serif text-base tracking-wide text-on-background hover:text-primary hover:bg-primary-container/30 transition-colors px-6 py-4 border-b border-outline/20" href="#services" onclick="closeMobileMenu()">Servicios</a>
     <a class="font-serif text-base tracking-wide text-on-background hover:text-primary hover:bg-primary-container/30 transition-colors px-6 py-4 border-b border-outline/20" href="#about" onclick="closeMobileMenu()">Nosotros</a>
-    <a class="font-serif text-base tracking-wide text-on-background hover:text-primary hover:bg-primary-container/30 transition-colors px-6 py-4" href="#contact" onclick="closeMobileMenu()">Contacto</a>
+    <a class="font-serif text-base tracking-wide text-on-background hover:text-primary hover:bg-primary-container/30 transition-colors px-6 py-4 border-b border-outline/20" href="#contact" onclick="closeMobileMenu()">Contacto</a>
+    <div class="px-6 py-4">
+        <a href="https://wa.me/51983288877" target="_blank" rel="noopener noreferrer" style="touch-action:manipulation;" class="block text-center bg-primary text-white py-3 rounded-full font-label text-sm uppercase tracking-widest">
+            Reservar Cita por WhatsApp
+        </a>
+    </div>
 </div>
 </nav>
 
@@ -120,8 +125,8 @@ tailwind.config = {
         <div class="max-w-md mb-8 md:mb-12 text-[#5c3d42] text-base md:text-lg leading-relaxed font-light" data-aos="fade-up" data-aos-delay="400">
             Elevando la belleza natural. Un refugio luminoso, romántico y repleto de detalles delicados en el corazón de Yanahuara, diseñado para resaltar tu luminosidad interna.
         </div>
-        <div data-aos="fade-up" data-aos-delay="600">
-            <a href="https://wa.me/51983288877" target="_blank" class="bg-[#4a2c31] text-white px-7 md:px-10 py-3 md:py-4 rounded-full font-label text-base md:text-lg tracking-widest hover:bg-primary transition-all duration-500 flex items-center gap-3 btn-glow">
+        <div>
+            <a href="https://wa.me/51983288877" target="_blank" rel="noopener noreferrer" style="touch-action:manipulation;" class="bg-[#4a2c31] text-white px-7 md:px-10 py-4 rounded-full font-label text-base md:text-lg tracking-widest hover:bg-primary transition-all duration-500 flex items-center gap-3 btn-glow">
                 RESERVAR CITA
                 <span class="material-symbols-outlined">arrow_forward</span>
             </a>
